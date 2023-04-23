@@ -13,6 +13,9 @@ const LeftNav = () => {
     return (
         <div>
             <h4>All category</h4>
+            <div style={{border: '2px solid black',width: '50%',marginTop: '20px', marginBottom: '20px', backgroundColor: '#B2BEB5'}}>
+                <h4>National News</h4>
+            </div>
             <div className='ps-4'>
                 {
                     categories.map(category => <p
