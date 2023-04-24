@@ -6,7 +6,7 @@ import QZone from '../QZone/QZone';
 import bg from '../../../assets/bg.png'
 const RightNav = () => {
     return (
-        <div>
+        <div className='sticky-top'>
             <h4>Login With</h4>
             <Button className='w-100' variant="outline-primary"><FaGoogle className='mx-3' />Login with Google</Button>
             <br />
