@@ -7,8 +7,25 @@ import Home from "../Pages/Home/Home/Home";
 import Category from "../Pages/Home/Category/Category";
 import NewsLayout from "../layouts/NewsLayout";
 import News from "../Pages/News/News/News";
+import LoginLayout from "../layouts/LoginLayout";
+import Login from "../Pages/Login/Login";
+import Register from "../Pages/Register/Register";
 
  const router = createBrowserRouter([
+  {
+    path: 'Info',
+    element: <LoginLayout></LoginLayout>,
+    children: [
+      {
+        path: 'login',
+        element: <Login></Login>
+      },
+      {
+        path: 'register',
+        element: <Register></Register>
+      },
+    ]
+  },
   {
     path: '/',
     element: <Main></Main>,
