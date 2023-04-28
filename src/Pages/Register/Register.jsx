@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProvider';
+import { updateProfile } from 'firebase/auth';
 const Register = () => {
     const { createUser } = useContext(AuthContext);
 
@@ -24,6 +25,16 @@ const Register = () => {
             })
             .catch(error => {
                 console.log(error);
+            })
+
+            // update user
+            updateProfile(name,photo)
+            .then(res =>{
+                const createdUserInfo = res.user;
+                console.log(createdUserInfo);
+            })
+            .catch(err =>{
+                console.log(err);
             })
 
 
