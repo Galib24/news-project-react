@@ -11,6 +11,8 @@ import LoginLayout from "../layouts/LoginLayout";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import PrivateRoute from "./PrivateRoute";
+import Terms from "../Pages/Shared/Terms/Terms";
+import Condition from "../layouts/condition";
 
  const router = createBrowserRouter([
   {
@@ -18,13 +20,19 @@ import PrivateRoute from "./PrivateRoute";
     element: <LoginLayout></LoginLayout>,
     children: [
       {
+        path: 'terms',
+        element: <Terms></Terms>
+      },
+      {
         path: 'login',
         element: <Login></Login>
       },
       {
         path: 'register',
         element: <Register></Register>
-      },
+      }
+     
+   
     ]
   },
   {
@@ -52,6 +60,18 @@ import PrivateRoute from "./PrivateRoute";
       loader: ({params}) => fetch(`http://localhost:5000/news/${params.id}`)
      }
     ]
+
+  },
+  {
+    path: 'Conditions',
+    element: <Condition></Condition>,
+    children: [
+      {
+        path: 'terms',
+        element: <Terms></Terms>
+      }
+    ]
   }
+  
  ])
 export default router;
