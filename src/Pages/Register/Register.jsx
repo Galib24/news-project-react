@@ -22,16 +22,18 @@ const Register = () => {
             .then(result => {
                 const createdUser = result.user;
                 console.log(createdUser);
+                form.reset();
             })
             .catch(error => {
                 console.log(error);
             })
 
             // update user
-            updateProfile(name,photo)
+            updateProfile( photo,name)
             .then(res =>{
                 const createdUserInfo = res.user;
                 console.log(createdUserInfo);
+               
             })
             .catch(err =>{
                 console.log(err);

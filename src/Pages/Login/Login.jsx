@@ -2,11 +2,14 @@ import React, { useContext } from 'react';
 import { Container } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProvider';
 
 const Login = () => {
+    
     const { signIn } = useContext(AuthContext);
+
+    const navigate = useNavigate();
 
 
     const handleSignIn = e =>{
@@ -21,6 +24,7 @@ const Login = () => {
         .then(res =>{
             const loggedUser = res.user;
             console.log(loggedUser);
+            navigate('/')
         })
         .catch(err =>{
             console.log(err);
