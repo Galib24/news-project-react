@@ -5,8 +5,10 @@ import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProvider';
 import { updateProfile } from 'firebase/auth';
+import { useState } from 'react';
 const Register = () => {
     const { createUser } = useContext(AuthContext);
+    const [accepted, setAccepted] = useState(false);
 
     const handleRegister = e => {
         e.preventDefault();
@@ -28,19 +30,23 @@ const Register = () => {
                 console.log(error);
             })
 
-            // update user
-            updateProfile( photo,name)
-            .then(res =>{
+        // update user
+        updateProfile(photo, name)
+            .then(res => {
                 const createdUserInfo = res.user;
                 console.log(createdUserInfo);
-               
+
             })
-            .catch(err =>{
+            .catch(err => {
                 console.log(err);
             })
 
 
     }
+const handleAccepted = event =>{
+    setAccepted(event.target.checked);
+}
+
     return (
         <Container className='w-25 mx-auto'>
             <h3>Please Register!!!</h3>
@@ -64,10 +70,10 @@ const Register = () => {
                     <Form.Control type="password" name='password' placeholder="Password" required />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Check  type="checkbox" name='accept' label={<>Accepts<Link to='/Info/terms'>terms and conditions</Link> </>} />
+                    <Form.Check onClick={handleAccepted} type="checkbox" name='accept' label={<>Accepts<Link to='/Info/terms'>terms and conditions</Link> </>} />
                 </Form.Group>
 
-                <Button variant="dark" type="submit">
+                <Button variant="dark" disabled={!accepted} type="submit">
                     Register
                 </Button>
                 <br />

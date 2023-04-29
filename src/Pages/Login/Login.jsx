@@ -12,7 +12,7 @@ const Login = () => {
     const navigate = useNavigate();
 
     const location = useLocation();
-    console.log('logIn page location', location);
+    // console.log('logIn page location', location);
     const from = location.state?.from?.pathname || '/';
 
 
@@ -21,13 +21,13 @@ const Login = () => {
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email,password);
+        // console.log(email,password);
 
 
         signIn(email, password) 
         .then(res =>{
             const loggedUser = res.user;
-            console.log(loggedUser);
+            // console.log(loggedUser);
             navigate(from, {replace: true});
         })
         .catch(err =>{
