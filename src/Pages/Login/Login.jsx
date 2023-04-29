@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Container } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProvider';
 
 const Login = () => {
@@ -10,6 +10,10 @@ const Login = () => {
     const { signIn } = useContext(AuthContext);
 
     const navigate = useNavigate();
+
+    const location = useLocation();
+    console.log('logIn page location', location);
+    const from = location.state?.from.pathname || '/';
 
 
     const handleSignIn = e =>{
@@ -24,7 +28,7 @@ const Login = () => {
         .then(res =>{
             const loggedUser = res.user;
             console.log(loggedUser);
-            navigate('/')
+            navigate(from, {replace: true});
         })
         .catch(err =>{
             console.log(err);
