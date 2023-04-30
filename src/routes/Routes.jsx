@@ -46,7 +46,7 @@ import Condition from "../layouts/condition";
       {
         path: '/category/:id',
         element: <Category></Category>,
-        loader: ({params}) => fetch(`http://localhost:5000/categories/${params.id}`)
+        loader: ({params}) => fetch(`https://news-project-client-server-galib24.vercel.app/categories/${params.id}`)
       }
     ]
   },
@@ -57,7 +57,7 @@ import Condition from "../layouts/condition";
      {
       path: ':id',
       element: <PrivateRoute><News></News></PrivateRoute> ,
-      loader: ({params}) => fetch(`http://localhost:5000/news/${params.id}`)
+      loader: ({params}) => fetch(`https://news-project-client-server-galib24.vercel.app/news/${params.id}`)
      }
     ]
 
